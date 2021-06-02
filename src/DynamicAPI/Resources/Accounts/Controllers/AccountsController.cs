@@ -29,7 +29,7 @@ namespace DynamicAPI.Resources.Accounts.Controllers
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult> GetAccounts([FromQuery] AccountsQuery accountsQuery) {
         
-      var accountQueryResponse = await _accountService.GetAccounts(accountsQuery.Page, accountsQuery.PerPage);
+      var accountQueryResponse = await _accountService.GetAccounts(accountsQuery.Page, accountsQuery.PerPage, accountsQuery.Filter);
       var selectedAccountData = _accountPropertySelector.SelectPropertiesToReturn(accountQueryResponse.Accounts, accountsQuery.Fields, accountsQuery.IncludeFields);
      
       if (accountsQuery.IncludeTotals) { 

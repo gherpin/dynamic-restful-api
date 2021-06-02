@@ -41,5 +41,13 @@ namespace DynamicAPI.Resources.Accounts.Controllers.InputModels
     /// <value></value>
     [FromQuery(Name = "include_totals")]
     public bool IncludeTotals { get; set; }
-    }
+
+
+    /// <summary>
+    /// Further filters the results returned from the api based on a property value (Syntax: propertyOneName[equalityOperator]=propertyOneValue&amp;propertyTwoName[equalityOperator]=propertyTwoValue)
+    /// </summary>
+    /// <value></value>
+    [FromQuery(Name = "filter")]
+    public string Filter { get; set;}
+  }
 }
