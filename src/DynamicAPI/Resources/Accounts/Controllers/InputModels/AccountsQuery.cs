@@ -44,10 +44,10 @@ namespace DynamicAPI.Resources.Accounts.Controllers.InputModels
 
 
     /// <summary>
-    /// Further filters the results returned from the api based on a property value (Syntax: propertyOneName[equalityOperator]=propertyOneValue&amp;propertyTwoName[equalityOperator]=propertyTwoValue)
+    /// Filter Results Based on one more more properties. Allowed operators ('eq', 'ne', 'gt', 'lt', 'ge', 'le') per OData Specification.
     /// </summary>
     /// <value></value>
-    [FromQuery(Name = "filter")]
+    [FromQuery(Name = "$filter")]
     public string Filter { get; set;}
   }
 }

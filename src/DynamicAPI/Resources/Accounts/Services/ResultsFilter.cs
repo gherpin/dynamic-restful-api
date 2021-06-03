@@ -8,29 +8,11 @@ namespace DynamicAPI.Resources.Accounts.Services {
     public class ResultFilter {
 
 
-        public List<T> FilterResults<T>(IEnumerable<T> results, string filter) {
+        public List<T> FilterResults<T>(IEnumerable<T> entities, string filter) {
 
             var propertiesToFilter = filter.Split('&');
             var compiledExpressions = CreateCompiledExpressions<T>(propertiesToFilter);
-            var filteredResults = new List<T>();
-
-            foreach(var item in results) {
-
-                bool returnItemInResultSet = true; //Include by default
-
-                foreach(var compiledExpression in compiledExpressions) {
-                    var result = compiledExpression(item);
-                    if (!result) { //Expression evaluated false so do not return item
-                        returnItemInResultSet = false;  
-                        break;
-                    } 
-                }
-
-                if (returnItemInResultSet) { filteredResults.Add(item); }
-            
-            }
-
-            return filteredResults;
+            return entities.Where(entity=> compiledExpressions.All(expression => expression(entity))).ToList();
         }
 
         private FilterParameters ParseFilter(string filter) {
@@ -68,20 +50,21 @@ namespace DynamicAPI.Resources.Accounts.Services {
         }
 
 
+        //https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752358
         private BinaryExpression CreateBinaryExpression(string equalityOperator, MemberExpression memberExpression, ConstantExpression constantExpression) {
 
             switch (equalityOperator) {
                 case "eq" :
                     return BinaryExpression.Equal(memberExpression, constantExpression);
-                case "neq" :
+                case "ne" :
                     return BinaryExpression.NotEqual(memberExpression, constantExpression);
                 case "gt" : 
                     return BinaryExpression.GreaterThan(memberExpression, constantExpression);
                 case "lt" :
                     return BinaryExpression.LessThan(memberExpression, constantExpression);
-                case "gte" :
+                case "ge" :
                     return BinaryExpression.GreaterThanOrEqual(memberExpression, constantExpression);
-                case "lte" :
+                case "le" :
                     return BinaryExpression.LessThanOrEqual(memberExpression, constantExpression);
                 default:
                     throw new System.Exception("Unnown equality operator");
@@ -124,6 +107,7 @@ namespace DynamicAPI.Resources.Accounts.Services {
                 return x;
             }
 
+            //Add additional types as needed.
 
             throw new Exception("Unknown Type");
         }

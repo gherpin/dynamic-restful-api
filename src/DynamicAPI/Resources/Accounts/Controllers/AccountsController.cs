@@ -22,6 +22,21 @@ namespace DynamicAPI.Resources.Accounts.Controllers
     /// <summary>
     /// Obtain lists of accounts
     /// </summary>
+    /// <remarks>
+    /// Sample requests: (Shown without encoding for clarity)
+    ///
+    ///     GET /accounts
+    ///     GET /accounts?fields=id,string&amp;include_fields=true&amp;page=0&amp;per_page=10
+    ///
+    ///     Results can be further refined using filter:
+    ///
+    ///     GET /accounts?$filter=id[eq]=34b68a8a-e6f6-4db5-9d7f-762cbc4db494
+    ///     GET /accounts?$filter=id[eq]=34b68a8a-e6f6-4db5-9d7f-762cbc4db494&amp;float[gt]=2.0
+    ///     GET /accounts?$filter=string[eq]=One
+    ///     GET /accounts?$filter=string[neq]=John
+    ///     
+    ///
+    /// </remarks>
     [Route("api/v1/accounts")]
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
