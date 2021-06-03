@@ -62,16 +62,24 @@ namespace DynamicAPI.Resources.Accounts.Services {
                 response.Add("id", accountDataModel.Id);
             }
 
-            if (properties.Contains(nameof(accountDataModel.PropertyOne).ToLower())){
-                response.Add("propertyone", accountDataModel.PropertyOne);
+            if (properties.Contains(nameof(accountDataModel.String).ToLower())){
+                response.Add("string", accountDataModel.String);
             }
 
-            if (properties.Contains(nameof(accountDataModel.PropertyTwo).ToLower())){
-                response.Add("propertytwo", accountDataModel.PropertyTwo);
+            if (properties.Contains(nameof(accountDataModel.Integer).ToLower())){
+                response.Add("integer", accountDataModel.Integer);
             }
 
-            if (properties.Contains(nameof(accountDataModel.PropertyThree).ToLower())) {
-                response.Add("propertythree", accountDataModel.PropertyThree);
+            if (properties.Contains(nameof(accountDataModel.Float).ToLower())){
+                response.Add("float", accountDataModel.Float);
+            }
+
+            if (properties.Contains(nameof(accountDataModel.Double).ToLower())){
+                response.Add("double", accountDataModel.Double);
+            }
+
+            if (properties.Contains(nameof(accountDataModel.Decimal).ToLower())) {
+                response.Add("decimal", accountDataModel.Decimal);
             }
 
             if (properties.Contains(nameof(accountDataModel.PropertyFour).ToLower())){
@@ -97,16 +105,25 @@ namespace DynamicAPI.Resources.Accounts.Services {
                 response.Add("id", accountDataModel.Id);
             }
 
-            if (!properties.Contains(nameof(accountDataModel.PropertyOne).ToLower())){
-                response.Add("propertyone", accountDataModel.PropertyOne);
+            if (!properties.Contains(nameof(accountDataModel.String).ToLower())){
+                response.Add("string", accountDataModel.String);
             }
 
-            if (!properties.Contains(nameof(accountDataModel.PropertyTwo).ToLower())){
-                response.Add("propertytwo", accountDataModel.PropertyTwo);
+            if (!properties.Contains(nameof(accountDataModel.Integer).ToLower())){
+                response.Add("integer", accountDataModel.Integer);
             }
 
-            if (!properties.Contains(nameof(accountDataModel.PropertyThree).ToLower())) {
-                response.Add("propertythree", accountDataModel.PropertyThree);
+            if (!properties.Contains(nameof(accountDataModel.Float).ToLower())){
+                response.Add("float", accountDataModel.Float);
+            }
+
+            if (!properties.Contains(nameof(accountDataModel.Double).ToLower())){
+                response.Add("double", accountDataModel.Double);
+            }
+
+
+            if (!properties.Contains(nameof(accountDataModel.Decimal).ToLower())) {
+                response.Add("decimal", accountDataModel.Decimal);
             }
 
             if (!properties.Contains(nameof(accountDataModel.PropertyFour).ToLower())){

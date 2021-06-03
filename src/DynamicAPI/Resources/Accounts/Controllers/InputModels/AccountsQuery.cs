@@ -41,5 +41,13 @@ namespace DynamicAPI.Resources.Accounts.Controllers.InputModels
     /// <value></value>
     [FromQuery(Name = "include_totals")]
     public bool IncludeTotals { get; set; }
-    }
+
+
+    /// <summary>
+    /// Filter Results Based on one more more properties. Allowed operators ('eq', 'ne', 'gt', 'lt', 'ge', 'le') per OData Specification.
+    /// </summary>
+    /// <value></value>
+    [FromQuery(Name = "$filter")]
+    public string Filter { get; set;}
+  }
 }
